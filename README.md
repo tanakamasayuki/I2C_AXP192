@@ -18,6 +18,8 @@ This is a library of AXP192, the Power Management for I2C connectivity.
 
 I2C_AXP192 axp192(I2C_AXP192_DEFAULT_ADDRESS, Wire1);
 
+const int btnPin = 37;
+
 void setup() {
   Serial.begin(115200);
   delay(1000);
@@ -39,8 +41,31 @@ void setup() {
     .GPIO4  = -1,
   };
   axp192.begin(initDef);
+
+  pinMode(btnPin, INPUT);
 }
 
 void loop() {
+  Serial.printf("getBatteryVoltage()          : %7.2f\n", axp192.getBatteryVoltage());
+  Serial.printf("getBatteryDischargeCurrent() : %7.2f\n", axp192.getBatteryDischargeCurrent());
+  Serial.printf("getBatteryChargeCurrent()    : %7.2f\n", axp192.getBatteryChargeCurrent());
+  Serial.printf("getAcinVolatge()             : %7.2f\n", axp192.getAcinVolatge());
+  Serial.printf("getAcinCurrent()             : %7.2f\n", axp192.getAcinCurrent());
+  Serial.printf("getVbusVoltage()             : %7.2f\n", axp192.getVbusVoltage());
+  Serial.printf("getVbusCurrent()             : %7.2f\n", axp192.getVbusCurrent());
+  Serial.printf("getInternalTemperature()     : %7.2f\n", axp192.getInternalTemperature());
+  Serial.printf("getApsVoltage()              : %7.2f\n", axp192.getApsVoltage());
+  Serial.printf("getPekPress()                : %4d\n"  , axp192.getPekPress());
+
+  Serial.println();
+
+  if (digitalRead(btnPin) == 0) {
+    Serial.printf("powerOff()\n");
+    Serial.flush();
+    delay(1000);
+    axp192.powerOff();
+  }
+
+  delay(1000);
 }
 ```
