@@ -42,11 +42,24 @@ class I2C_AXP192 {
     void setEXTEN(bool enable);
     void setBACKUP(bool enable);
 
+    float getBatteryVoltage();
+    float getBatteryDischargeCurrent();
+    float getBatteryChargeCurrent();
+    float getAcinVolatge();
+    float getAcinCurrent();
+    float getVbusVoltage();
+    float getVbusCurrent();
+    float getInternalTemperature();
+    float getApsVoltage();
+
+    void powerOff();
+    uint8_t getPekPress();
+
   private:
-    uint8_t ReadByte(uint8_t Address);
-    void WriteByte(uint8_t Address, uint8_t Data);
-    void BitOn(uint8_t Address, uint8_t Bit);
-    void BitOff(uint8_t Address, uint8_t Bit);
+    uint8_t readByte(uint8_t address);
+    void writeByte(uint8_t address, uint8_t data);
+    void bitOn(uint8_t address, uint8_t bit);
+    void bitOff(uint8_t address, uint8_t bit);
 
     TwoWire *_i2cPort;
     int _deviceAddress;
