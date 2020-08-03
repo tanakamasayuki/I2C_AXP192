@@ -45,6 +45,7 @@ class I2C_AXP192 {
     float getBatteryVoltage();
     float getBatteryDischargeCurrent();
     float getBatteryChargeCurrent();
+    float getBatteryPower();
     float getAcinVolatge();
     float getAcinCurrent();
     float getVbusVoltage();

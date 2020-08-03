@@ -233,6 +233,13 @@ float I2C_AXP192::getBatteryChargeCurrent() {
   return val * 0.5;
 }
 
+float I2C_AXP192::getBatteryPower() {
+  float VoltageLSB = 1.1;
+  float CurrentLCS = 0.5;
+  uint32_t val = (readByte(0x70) << 16) | (readByte(0x71) << 8) | readByte(0x72);
+  return  1.1 * 0.5 * val / 1000.0;
+}
+
 float I2C_AXP192::getAcinVolatge() {
   uint16_t val = readByte(0x56) << 4;
   val |= readByte(0x57);
