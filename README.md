@@ -14,7 +14,7 @@ This is a library of AXP192, the Power Management for I2C connectivity.
 
 ## Usage
 ```c
-#include "I2C_AXP192.h";
+#include "I2C_AXP192.h"
 
 I2C_AXP192 axp192(I2C_AXP192_DEFAULT_ADDRESS, Wire1);
 

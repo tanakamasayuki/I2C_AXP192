@@ -222,14 +222,14 @@ float I2C_AXP192::getBatteryVoltage() {
 }
 
 float I2C_AXP192::getBatteryDischargeCurrent() {
-  uint16_t val = readByte(0x7a) << 5;
-  val |= readByte(0x7b);
+  uint16_t val = readByte(0x7c) << 5;
+  val |= readByte(0x7d);
   return val * 0.5;
 }
 
 float I2C_AXP192::getBatteryChargeCurrent() {
-  uint16_t val = readByte(0x7c) << 5;
-  val |= readByte(0x7d);
+  uint16_t val = readByte(0x7a) << 5;
+  val |= readByte(0x7b);
   return val * 0.5;
 }
 
