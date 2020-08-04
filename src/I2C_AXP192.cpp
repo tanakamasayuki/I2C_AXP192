@@ -49,7 +49,7 @@ void I2C_AXP192::writeByte(uint8_t address, uint8_t data) {
   _i2cPort->write(address);
   _i2cPort->write(data);
   _i2cPort->endTransmission();
-  ESP_LOGD("AXP192", "writeByte(%02X) = %02X", address, Data);
+  ESP_LOGD("AXP192", "writeByte(%02X) = %02X", address, data);
 }
 
 void I2C_AXP192::bitOn(uint8_t address, uint8_t bit) {
@@ -234,8 +234,6 @@ float I2C_AXP192::getBatteryChargeCurrent() {
 }
 
 float I2C_AXP192::getBatteryPower() {
-  float VoltageLSB = 1.1;
-  float CurrentLCS = 0.5;
   uint32_t val = (readByte(0x70) << 16) | (readByte(0x71) << 8) | readByte(0x72);
   return  1.1 * 0.5 * val / 1000.0;
 }
